@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="stick" style="background-color: blueviolet; height: 20vh; z-index: 1;">
+    <img src="{{ url_for('static', filename='logo.png') }}" style="height: 20vh; float: left;">
+    <h1>Магазин сотовых телефонов</h1>
+</div>
+
+<br>
+<div>
+    <form style="text-align: center; display: flex; justify-content: space-around;">
+        
+        <select name = "color">
+        <option value = "">Выберите цвет</option>
+            {% for c in color %}
+            <option value="{{c.pk}}">{{c.name}}</option>
+            {% endfor %}
+        </select>
+
+        <div>Укажите мин. цену: <input name = "priceMIN" value="0"></div>
+        <div>Укажите макс. цену: <input name = "priceMAX" value="0"></div>
+        <input type="submit" value="Отфильтровать">
+    </form>
+</div>
+<br>
+
+<div style= "display: flex; justify-content: space-around;">
+    
+    <div style = "background-color:rgb(1, 1, 164); width:20%;">
+        <form style="display: flex; flex-direction: column; justify-content: space-between; position: sticky; top: 20vh">
+            {% for b in brand %}
+            <button class="swing" name = "brand" type="submit" value="{{b.pk}}" style="color: aliceblue; background-color: aqua;">{{b.name}}</button>
+            {% endfor %}
+            <button class="swing" type="submit" value="" style="color: aliceblue; background-color: aqua;">Отменить</button>
+        </form>
+        
+    </div>
+
+    <div style="width: 960px; margin-left: 20pt; background-color: cadetblue; justify-content: left; width: 80%; float: right;">
+        <div>
+            <h1>Телефоны</h1>
+            {% for p in phones %}
+            <div style="display: flex;">
+                <div> 
+                    <img src="static/{{p}}.jpg" style="border: 2px solid black; width: 30vh;">
+                </div>
+                <a name = "brand" type="submit" value="{{ p.brand }}" href="{{ url_for('product_page') }}" style="border: 2px solid black; padding-left: 30px; background-color: brown; max-height: 30vh; display: flex; width: 100%; align-items: center; text-decoration: none;">
+                    <div>
+                        <h3 style="color: aliceblue;">Модель: {{ p }}<br>Производитель: {{ p.brand }}<br>Цвет: {{ p.color }}<br>Цена: {{ p.price }}</h3>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

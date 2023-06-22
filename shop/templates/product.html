@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="stick" style="background-color: blueviolet; height: 20vh; z-index: 1;">
+    <img src="{{ url_for('static', filename='logo.png') }}" style="height: 20vh; float: left;">
+    <h1>Магазин сотовых телефонов</h1>
+</div>
+
+<div style= "display: flex; justify-content: space-around;">
+    
+    <div style = "background-color:rgb(1, 1, 164); width:20%;">
+        <form style="display: flex; flex-direction: column; justify-content: space-between; position: sticky; top: 20vh">
+            {% for b in brand %}
+            <button class="swing" name = "brand" type="submit" value="{{b.pk}}" style="color: aliceblue; background-color: aqua;">{{b.name}}</button>
+            {% endfor %}
+            <a href="{{ url_for('index_page') }}" class="swing btn" style="color: aliceblue; background-color: aqua;">Назад</a>
+        </form>
+        
+    </div>
+
+    <div style="width: 960px; margin-left: 20pt; background-color: cadetblue; justify-content: left; width: 80%; float: right;">
+        <div>
+            <h1>Телефоны</h1>
+            {% for p in phones %}
+            <div style="display: flex;">
+                <div> 
+                    <img src="static/{{p}}.jpg" style="border: 2px solid black; width: 70vh;">
+                </div>
+                <div style="border: 2px solid black; padding-left: 30px; background-color: brown; max-height: 70vh; display: flex; width: 100%; align-items: center;">
+                    <h3 style="color: aliceblue;">Модель: {{ p }}<br>Производитель: {{ p.brand }}<br> Описание: {{ p.description }}</h3>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

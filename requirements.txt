@@ -1,0 +1,5 @@
+Flask
+Flask-Admin
+Flask-Migrate
+Flask-SQLAlchemy
+SQLAlchemy==1.4.*
