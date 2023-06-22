@@ -7,7 +7,7 @@ migrate = Migrate()
 
 class Brand(db.Model):
     pk = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30), nullable=False)
+    name = db.Column(db.String(50), unique=True, nullable=False)
     phones = db.relationship("Phone", back_populates="brand")
 
     def __str__(self):

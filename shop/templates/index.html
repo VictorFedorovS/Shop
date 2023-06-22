@@ -45,7 +45,7 @@
                 <div> 
                     <img src="static/{{p}}.jpg" style="border: 2px solid black; width: 30vh;">
                 </div>
-                <a name = "brand" type="submit" value="{{ p.brand }}" href="{{ url_for('product_page') }}" style="border: 2px solid black; padding-left: 30px; background-color: brown; max-height: 30vh; display: flex; width: 100%; align-items: center; text-decoration: none;">
+                <a name = "brand" type="submit" value="{{ p.brand }}" href="{{ url_for('product_page', product_id=p.pk) }}" style="border: 2px solid black; padding-left: 30px; background-color: brown; max-height: 30vh; display: flex; width: 100%; align-items: center; text-decoration: none;">
                     <div>
                         <h3 style="color: aliceblue;">Модель: {{ p }}<br>Производитель: {{ p.brand }}<br>Цвет: {{ p.color }}<br>Цена: {{ p.price }}</h3>
                     </div>
